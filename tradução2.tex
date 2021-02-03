@@ -1,0 +1,58 @@
+\documentclass[a4paper, 12 pt]{article}
+\usepackage[top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\begin{document}
+A última década testemunhou uma adoção sem precedentes do aprendizado de máquina
+técnicas para dar sentido aos dados disponíveis e fazer previsões para apoiar a
+tomada de decisão para uma ampla variedade de aplicações, desde análises de saúde
+ics para previsões de rotatividade de clientes, recomendações de filmes e política macroeconômica. O foco na literatura de aprendizado de máquina tem sido cada vez mais
+sistemas sofisticados com o objetivo primordial de melhorar a precisão de seus
+previsões ao custo de tornar esses sistemas essencialmente caixa-preta. Enquanto em
+certas tarefas, como previsões de anúncios, a precisão é o objetivo principal, em outros
+domínios, por exemplo, legal, médico e governamental, é essencial que o
+tomadores de decisão que podem não ter sido treinados em aprendizado de máquina podem interpretar
+e validar as previsões.
+As tecnicas interpretaveis ​​mais populares que tendem a ser adotadas e
+confiaveis ​​pelos tomadores de decisão incluem regras de classificação, árvores de decisão e decisões
+listas de ação [10,29,8,30]. Em particular, regras de decisão com um pequeno número de booleanos
+as clausulas tendem a ser mais interpretaveis. Esses modelos podem ser usados ​​para aprender
+modelos interpretáveis ​​desde o início, e também como proxies que fornecem post-hoc
+explicações para modelos de caixa preta pré-treinados [12,1].
+Na frente teórica, o problema de aprendizagem de regras mostrou ser com-
+putacionalmente intratável [32]. Consequentemente, os primeiros esforços práticos, como
+as abordagens de lista de decisão e árvore de decisão se basearam em uma combinação de heuristicamente
+objetivos de otimização escolhidos e técnicas algorítmicas gananciosas, e o tamanho
+da regra foi controlada por parada antecipada ou poda de regra ad-hoc. Somente
+recentemente tem havido algumas formulações que tentam equilibrar o acúmulo
+atrevido e o tamanho da regra em um objetivo de otimização de princípio, seja por meio
+otimização combinatória, relaxamentos de programação linear (LP), submodular
+otimização, ou métodos bayesianos [4,25,24] [7,34], conforme revisamos na Seção 5.
+Motivado pelo progresso significativo no desenvolvimento de sistemas combinatórios
+solvers (em particular, MaxSAT), perguntamos: podemos projetar um quadro combinatório
+trabalhar para construir com eficiência regras de classificação interpretáveis ​​que aproveitem
+desses avanços recentes? A principal contribuição deste artigo é apresentar
+uma estrutura combinatória que permite um controle preciso de precisão vs.
+pretabilidade, e verificar se os avanços computacionais na comunidade MaxSAT
+pode tornar prático a solução de problemas de classificação em grande escala.
+Em particular, este documento faz as seguintes contribuições:
+1. Uma estrutura baseada em MaxSAT, MLIC, que comprovadamente negocia precisão vs.
+interpretabilidade das regras
+2. Uma implementação de protótipo de MLIC baseada em MaxSAT que é capaz
+de encontrar regras de classificação ótimas (ou de alta qualidade quase ótimas) de
+conjuntos de dados modernos em grande escala
+3. Mostramos que em muitos problemas de classificação a interpretabilidade pode ser alcançada
+com apenas uma pequena perda de precisão e, além disso, MLIC, que especificamente
+procura regras interpretáveis, pode aprender com muito menos amostras do que
+técnicas de caixa de ML.
+Além disso, esperamos compartilhar nosso entusiasmo com aplicações de restrição
+programação / MaxSAT em Aprendizado de Máquina, e para encorajar pesquisadores em
+classificação interpretável e nas comunidades CSP / SAT a considerar
+este tópico mais adiante: tanto no desenvolvimento de novas formulações baseadas em SAT para inter
+pretable ML, e na concepção de solucionadores sob medida sintonizados com o problema de inter
+pretable ML.
+O resto do artigo está organizado da seguinte forma: Discutimos notações e prelim-
+inários na Seção 2. Em seguida, apresentamos o MLIC, que é a principal contribuição
+deste artigo, na Seção 3 e acompanhamento com configuração experimental e resultados
+em um grande conjunto de benchmarks na Seção 4. Discutimos então o trabalho relacionado em
+Seção 5 e finalmente concluir na Seção
+\end{document}
