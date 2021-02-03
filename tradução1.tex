@@ -1,0 +1,93 @@
+
+\begin{document}
+7O mundo mudou com os avanços rápidos e recentes no aprendizado de máquina. Decisão
+tarefas que pareciam muito além das capacidades da inteligência artificial agora se tornaram
+comumente resolvido usando aprendizado de máquina [32
+, 35
+, 41]. Mas isso tem algum custo.
+A maioria dos algoritmos de aprendizado de máquina são opacos, incapazes de explicar por que as decisões foram
+feito. Pior, eles podem ser influenciados por seus dados de treinamento e se comportar mal quando expostos
+a dados fora dos quais foram treinados. Daí o crescente interesse em explicável
+inteligência artificial (XAI) [
+4
+14
+, 16
+, 18
+, 22
+, 23
+, 26
+, 29
+30
+, 36
+–38
+, 42
+, 43
+, 48
+, 49
+, 52],
+incluindo programas de pesquisa [
+3
+, 24] e legislação [17
+, 21].
+Neste artigo, vamos nos concentrar em problemas de classificação, onde a entrada é um conjunto de
+instâncias com recursos e, como um rótulo, uma classe para prever. Para esses problemas, alguns dos
+as formas mais explicáveis ​​de formalismo de aprendizado de máquina são conjuntos de decisões
+[11
+, 12
+,
+15
+, 20
+31
+, 34
+, 39]. Um conjunto de decisão é um conjunto de regras de decisão, cada uma com condições
+C e
+decisão
+X, de modo que se uma instância satisfizer
+C, então sua classe está prevista para ser
+X. An
+vantagem dos conjuntos de decisão sobre as árvores de decisão e listas de decisão mais populares é que
+cada regra pode ser entendida de forma independente, tornando este formalismo um dos mais fáceis
+explicar. Na verdade, a fim de explicar uma decisão particular na instância
+D, podemos apenas
+referem-se a uma única regra de decisão
+C
+⇒
+X s.t.
+D satisfaz
+C
+.
+Para que os conjuntos de decisões sejam claros e explicáveis ​​a um ser humano, as regras individuais devem ser
+conciso. Trabalhos anteriores examinaram conjuntos de decisões de construção que envolvem o mínimo
+regras possíveis e, em seguida, minimiza o número de literais nas regras [31]; ou construção
+arXiv: 2007.15140v1 [cs.AI] 29 de julho de 2020
+2 Yu et al.
+um classificador CNF que fixa o número de regras e, em seguida, minimiza o número de literais [20, 39] para explicar as instâncias positivas da classe. Este trabalho também sofre de
+a limitação de que as regras apenas prevêem a classe 1, e o modelo prevê a classe 0 se não
+regra se aplica. Infelizmente, para explicar uma instância de classe 0, precisamos usar (o
+negação de todas as regras, tornando as explicações não sucintas.
+Neste trabalho, argumentamos que o número de regras é a medida errada de explicabilidade,
+visto que, por exemplo, 3 regras, cada uma envolvendo 100 condições, são provavelmente menos compreensíveis do que, digamos, 5 regras, cada uma envolvendo 20 condições. Na verdade, desde a explicação
+de uma única instância é apenas uma única regra de decisão, o número de regras está longe de ser
+tão importante quanto o tamanho das regras individuais. Portanto, o trabalho anterior sobre a construção de conjuntos de decisão de tamanho mínimo não usou a melhor medida de tamanho para explicabilidade.
+Neste trabalho, examinamos a construção direta de conjuntos de decisão do menor total
+tamanho, onde o tamanho de uma regra com as condições C é | C | + 1 (o 1 adicional é para o
+descritor de classe X). Isso leva a conjuntos de decisões menores (em termos de literais) que parecem
+muito mais atraente para explicar decisões.
+Acontece que esta definição de tamanho leva a modelos SAT que são experimentalmente
+mais difícil de resolver, mas os conjuntos de decisões resultantes podem ser significativamente menores. Contudo,
+para conjuntos de decisões esparsos, onde podemos considerar um conjunto de regras menor, se houver
+não cometer muitos erros na classificação, esta nova medida não é mais difícil de
+compute do que a medida de contagem de regra tradicional e fornece decisões de granularidade mais precisas
+na dispersão.
+As contribuições deste artigo são
+- A primeira abordagem para construir conjuntos de decisão ideais em termos do número total de
+literais necessários para definir todo o conjunto,
+- Modelos SAT e MaxSAT alternativos para resolver este problema e variações esparsas
+que permitem uma troca de precisão versus tamanho,
+- Resultados experimentais detalhados que mostram a aplicabilidade desta abordagem, que
+demonstrar que nossa melhor abordagem pode gerar conjuntos de decisão esparsos ideais rapidamente
+com precisão comparável aos melhores métodos heurísticos, mas muito menor.
+O artigo está organizado da seguinte forma. Seção 2 apresenta a notação e definições
+usado em todo o papel. O trabalho relacionado é descrito na Seção 3. A Seção 4 descreve
+as novas codificações baseadas em SAT e MaxSAT para a inferência de conjuntos de decisão. Os resultados experimentais são analisados ​​na Seção 5. Finalmente, a Seção 6 conclui o artigo.
+\end{document}
