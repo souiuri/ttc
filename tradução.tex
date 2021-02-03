@@ -2,13 +2,48 @@
 \usepackage[top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage[utf8]{inputenc}
 \begin{document}
-O aprendimento de máquinas testemunhou um grande progresso e importante sucesso nos anos recentes. Em algumas configurações, previsões feitas por algoritmo de aprendizagem de máquinas devem promover explicações que preferivelmente pode interpretar ou serem entendidas por marcadores de decisão humanas. Exemplos concretos incluem situações de segurança critica, mas também quando decisões de transparência são superiores. A importância da inteligencia artificial que pode ser explicado, exemplo: o problema de explicações associáveis com as previsões ML é enfatizado em pesquisas recentes por programas de pesquisas em andamento, pelo nível de legislação EU pelo qual é esperado por reforçar a geração automática de explicações, e também o número de encontros de modelos de computação explicáveis ML.
-	
-	Um uso frequente utilizado para promover explicações para as previsões ML é recorrer a um tipo de modelo logica relacional, incluindo listas de regras/decisões, Conjuntos de regras/decisões, e arvores de decisão. Esse modelo de logica relacional pode na maioria dos casos associar explicações com previsões,representadas como conjunções de literais, que vem de um modelo real de representação. Claramente, um menor modelo de representação, as explicações tendem a ser mais simples, e também mais fáceis de serem entendidas por marcadores de decisões humanas.
-	
-	Abordagens recentes incluem a computação de listas de regras(maiores ou menores), a computação de conjuntos de decisão, e também a computação de arvore de de decisão. Lista de regras impõem uma ordem de regras, enquanto conjunto de decisão não. Claramente por uma perspectiva interpretável, conjuntos de decisão seçao mais atrativos uma ve que cada previsão depende apenas as associações literais de cada regra. Pelo lado negativo conjuntos de regra exibem uma sobre posição de regras, por tanto podem requerer que decisões sejam feitas quando mais de uma classe é prevista. Além disso, mesmo formas restritas de aprendizagem de regras são conhecidas por serem difíceis por NP.
-	
-	Esse artigo analisa o trabalho recente em conjuntos de computação interpretáveis. Esse artigo destaca o número de desvantagens da abordagem proposta, relaciona cm sobreposição de regras, a geração de explicações, e também a possibilidade de alterara a escala da aplicação proposta. Esse texto portanto investiga tres tópicos principais. O primeiro tópico é a proposta de definições rigorosas de sobreposição de regras. Esss texto se relaciona essa nova definição com o trabalho recente, e com conjunturas de que resolvendo o problema da sobreposição quando aprendendo o conjunto de decisões mais adequado é dificil para o segundo nível da hierarquia polinomial. Este artigo então propoe um numero de variantes de conjunto de decisões de aprendizagem com uma demanda de limitações menor na sobreposições, e mostra que essas variantes são realmente difíceis para NP. O segundo tópico é problema de explicações geradas para previsões. Esse artigo mostra diferentes modelos para aprendizagem de conjuntos de decisão providas por diferentes formas de explicações de computação, dessa forma dando capacidade a explicações de geração na maioria das configurações. O terceiro tópico é desenvolver modelos proposicionais diferente para aprendizagem com um dos mais eficientes conjuntos de decisão. Os modelos propostos criando em um trabalho recente com inferência indutiva, mas introduzem um numero de variantes, permitindo múltiplas classes, e também acomodando diferente limites de sobreposição. Além disso, esse artigo mostra que todos esses modelos exibem simetrias na formulações de problemas, e então predicações quebrando essas simetrias podem ser usadas para melhorar a performance.
-	
-	Esse artigo é organizado então dessa forma. Seção 2 introduz as definições e anotações usadas no restante do texto. O problema da sobreposição e explicação da gerações é investigada na seção 3. Modelos de oferta para aprendizagem de conjuntos de decisão sujeitos a diferentes limites na sobreposição são propostos na seção 4. A seção 5 analisa a performance da abordagem proposta nos respectivos conjuntos de dados, e compara com trabalhos recentes. A seção 6 conclui o artigo.
+O aprendizado de máquina (ML) testemunhou um progresso notável e sucessos importantes
+nos últimos anos. Em algumas configurações, as previsões feitas por algoritmos de aprendizado de máquina
+deve fornecer explicações, de preferência explicações que possam ser interpretadas
+(ou compreendido) por tomadores de decisão humanos. Exemplos concretos incluem segurança crítica
+situações, mas também quando a transparência das decisões é fundamental. A importância de
+AI explicável (XAI), ou seja, o problema de associar explicações a previsões de ML,
+é sublinhado por pesquisas recentes [2, 21, 42], por programas de pesquisa em andamento [9],
+pela legislação a nível da UE que se espera que imponha a geração automatizada de explicações
+[11], e também por uma série de reuniões sobre a computação de modelos de ML explicáveis
+[16, 17, 30].
+Uma abordagem frequentemente usada para fornecer explicações para as previsões de ML é recorrer a
+algum tipo de modelo relacionado à lógica, incluindo listas de regras / decisões, conjuntos de regras / decisões e
+árvores de decisão [2, 21]. Esses modelos relacionados à lógica podem, na maioria dos casos, associar explicações
+com previsões, representadas como conjunções de literais, que decorrem da representação real do modelo. Claramente, quanto menor for a representação do modelo, mais simples
+as explicações provavelmente serão e, portanto, mais fáceis de entender pelos tomadores de decisão humanos.
+Abordagens recentes incluem o cálculo de listas de regras (menores ou menores) [2,42],
+o cálculo de conjuntos de decisão [21], mas também o cálculo de árvores de decisão [3].
+As listas de regras impõem uma ordem das regras [35], enquanto os conjuntos de decisões não. Claramente,
+de uma perspectiva de interpretabilidade, os conjuntos de decisões são os mais atraentes, uma vez que cada
+a previsão depende apenas dos literais associados a cada regra. Do lado negativo,
+conjuntos de decisões podem exibir sobreposição de regras e, portanto, podem exigir que decisões sejam tomadas quando
+mais de uma classe está prevista. Além disso, mesmo as formas restritas de aprendizado de regras são
+bem conhecido por ser difícil para NP [35] 
+Este artigo analisa trabalhos recentes sobre computação de conjuntos de decisões interpretáveis. O
+artigo destaca uma série de desvantagens da abordagem proposta, relacionadas com a regra
+se sobrepõem, a geração de explicações, mas também com a escalabilidade da abordagem.
+O artigo então investiga três tópicos principais. O primeiro tópico é a proposta de um rigoroso
+definição de sobreposição de regra. O artigo relaciona esta nova definição com trabalhos anteriores, e
+conjectura que resolver o problema de sobreposição ao aprender a decisão ideal (em tamanho)
+conjuntos é difícil para o segundo nível da hierarquia polinomial. O artigo então propõe um
+número de variantes de conjuntos de decisões de aprendizagem com restrições menos exigentes na sobreposição,
+e mostra que essas variantes são difíceis para NP. O segundo tópico é o problema
+de gerar explicações para previsões. O artigo mostra que diferentes modelos para
+conjuntos de decisão de aprendizagem fornecem diferentes formas de explicações computacionais, permitindo assim
+a geração de explicações na maioria dos ambientes. O terceiro tópico é desenvolver diferentes
+modelos proposicionais para aprender conjuntos de decisão ótimos. Os modelos propostos baseiam-se
+trabalhos anteriores sobre inferência indutiva [19], mas introduzem uma série de variantes, permitindo
+para várias classes e também acomodando diferentes restrições de sobreposição. 
+The paper is organized as follows. Section 2 introduces the definitions and notation
+used in the remainder of the paper. The issue of overlap and explanation generation
+is investigated in Section 3. Propositional models for learning decision sets subject to
+different constraints on overlap are proposed in Section 4. Section 5 analyzes the performance
+of the proposed approach on representative datasets, and compares with earlier
+work [21]. Section 6 concludes the paper.
 \end{document}
